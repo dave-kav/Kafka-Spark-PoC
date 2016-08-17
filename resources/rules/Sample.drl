@@ -1,0 +1,28 @@
+package com.sample
+ 
+import com.ds.result.Result;
+ 
+rule "Home Win"
+    when
+        r : Result( getHomeScore() > getAwayScore() )
+    then
+        r.setResult("Home win - ");
+        update( r );
+end
+
+rule "Away Win"
+    when
+        r : Result( getHomeScore() < getAwayScore() )
+    then
+        r.setResult("Away win - ");
+        update( r );
+end
+
+rule "Draw"
+    when
+        r : Result( getHomeScore() == getAwayScore() )
+    then
+        r.setResult("Draw - ");
+        update( r );
+end
+
